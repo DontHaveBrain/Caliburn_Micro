@@ -9,6 +9,10 @@
 
   <ItemGroup>
     <PackageReference Include="Caliburn.Micro" Version="4.0.212" />
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-rc2" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.0.1-ci614" />
+    <PackageReference Include="Panuon.WPF" Version="1.1.0" />
+    <PackageReference Include="Panuon.WPF.UI" Version="1.2.1.2" />
     <PackageReference Include="System.ComponentModel.Composition" Version="7.0.0" />
   </ItemGroup>
 

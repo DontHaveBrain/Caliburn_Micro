@@ -5,8 +5,98 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CaliburnMicro.Views"
         mc:Ignorable="d"
+        xmlns:pu="https://opensource.panuon.com/wpf-ui"
+        xmlns:cm="http://www.caliburnproject.org"
+        xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="ShellView" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="326*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <material:PackIcon Kind="{Binding IconShell}" Width="80" Height="45"  Foreground="Black"/>
+            </Grid>
+            <TreeView ItemsSource="{Binding Menu}" Grid.Row="1" Grid.RowSpan="2" Background="#FFF5DE">
+                <TreeView.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="14" />
+                        <Setter Property="FontWeight" Value="Normal" />
+                        <Setter Property="Margin" Value="4,2" />
+                    </Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Width" Value="20" />
+                        <Setter Property="Height" Value="Auto" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Cursor" Value="Hand" />
+                    </Style>
+                </TreeView.Resources>
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                        <Grid Width="200">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <material:PackIcon Kind="{Binding Icon}"  Foreground="Black"/>
+                            <TextBlock Text="{Binding Name}" Grid.Column="1" FontWeight="Bold"/>
+                            <Button Grid.Column="2" cm:Message.Attach="[Event Click]=[Action UpdateScreen($dataContext)]">
+                                <TextBlock Text="⬇"/>
+                            </Button>
+                        </Grid>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+                <!--<TreeView.ItemContainerStyle>
+                    <Style TargetType="TreeViewItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Column="0" Source="{Binding IconPath}" Stretch="Uniform" Margin="2" Height="16" Width="16"/>
+                                        <TextBlock Text="{Binding Name}" Grid.Column="1" FontWeight="Bold"/>
+                                        <Button Grid.Column="2" cm:Message.Attach="[Event Click]=[Action UpdateScreen($dataContext)]">
+                                            <Path Data="M16.293,9.293l-1.414-1.414L10,12.172l-4.293-4.293-1.414,1.414L8.586,10l-4.293,4.293,1.414,1.414L10,11.828l4.293,4.293,1.414-1.414L11.414,10l4.293-4.293Z" Fill="Black" Height="12" Width="12" Stretch="Uniform"/>
+                                        </Button>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TreeView.ItemContainerStyle>-->
+            </TreeView>
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <WrapPanel Margin="40 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBlock Text="上卜阴阳，下算天命" FontSize="40" Foreground="Red"/> 
+                </WrapPanel>
+                <WrapPanel Margin="40 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock Text="☯" FontSize="40" Foreground="Red"/>
+                </WrapPanel>
+            </Grid>
+            <Grid Grid.Row="1" Background="#E9EBED">
+                <!--跳转页面-->
+                <pu:CarouselPanel Grid.Column="1" Orientation="Vertical" Background="#E9EBED" Animation="Fade,Flow" AnimationDuration="0:0:0.3" CurrentIndex="{Binding SelectedViewIndex}" Grid.ColumnSpan="2">
+                    <ContentControl x:Name="CurrentView" />
+                </pu:CarouselPanel>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
