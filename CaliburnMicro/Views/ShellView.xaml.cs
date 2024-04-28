@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CaliburnMicro.Views.Login
+namespace CaliburnMicro.Views
 {
     /// <summary>
-    /// LoginView.xaml 的交互逻辑
+    /// ShellView.xaml 的交互逻辑
     /// </summary>
-    public partial class LoginView : Window
+    public partial class ShellView : Window
     {
-        public LoginView()
+        public ShellView()
         {
             InitializeComponent();
         }

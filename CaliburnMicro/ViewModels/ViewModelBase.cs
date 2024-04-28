@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CaliburnMicro.ViewModel
 {
-    internal class ViewModelBase:Screen
+    public class ViewModelBase:Screen
     {
         public IWindowManager WindowManager =>
            IoC.Get<IWindowManager>();

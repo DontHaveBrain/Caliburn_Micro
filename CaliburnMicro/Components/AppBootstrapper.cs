@@ -1,5 +1,4 @@
-﻿using Caliburn.Micro;
-using CaliburnMicro.ViewModel.Login;
+﻿using Caliburn.Micro; 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +8,10 @@ using System.Windows;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
+using CaliburnMicro.Views;
+using System.Reflection;
+using System.Windows.Threading;
+using CaliburnMicro.ViewModels;
 
 namespace CaliburnMicro.Components
 {
@@ -42,8 +45,47 @@ namespace CaliburnMicro.Components
         }
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            var viewModel = new LoginViewModel();
+            ShellViewModel? viewModel = new ShellViewModel();
             _windowManager.ShowWindowAsync(viewModel);
+        }
+        protected override void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            base.OnUnhandledException(sender, e);
+        }
+
+        protected override object GetInstance(Type service, string key)
+        {
+            string contract = string.IsNullOrEmpty(key)
+               ? AttributedModelServices.GetContractName(service)
+               : key;
+
+            var exports = _container.GetExportedValues<object>(contract);
+
+            if (exports.Any())
+                return exports.First();
+
+            throw new Exception($"找不到实例 {contract}。");
+        }
+
+        protected override IEnumerable<object> GetAllInstances(Type service)
+        {
+            return _container.GetExportedValues<object>(AttributedModelServices.GetContractName(service));
+        }
+
+        protected override IEnumerable<Assembly> SelectAssemblies()
+        {
+            var assemblies = new List<Assembly>()
+            {
+                Assembly.GetEntryAssembly(),
+                Assembly.GetExecutingAssembly(),
+            };
+
+            return assemblies.Where(x => x != null).Distinct();
+        }
+
+        protected override void BuildUp(object instance)
+        {
+            _container.SatisfyImportsOnce((ComposablePart)instance);
         }
     }
 }
