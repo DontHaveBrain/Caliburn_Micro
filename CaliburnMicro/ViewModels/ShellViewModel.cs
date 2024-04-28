@@ -1,7 +1,5 @@
 ﻿using Caliburn.Micro;
-using CaliburnMicro.ViewModel;
-using CaliburnMicro.ViewModels.Heavenly_Stems;
-using CaliburnMicro.ViewModels.Heavenly_Stems.H1_os;
+using CaliburnMicro.ViewModel; 
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -61,20 +59,10 @@ namespace CaliburnMicro.ViewModels
         };
         public void UpdateScreen(SubItem subItem)
         {
+            MessageBox.Show($"页面{subItem.Screen}");
             switch(subItem.Screen)
             {
-                case 1:
-                    CurrentView =new H1ViewModel();
-                    break;
-                case 11:
-                    CurrentView = new H11ViewModel();
-                    break;
-                case 12:
-                    CurrentView = new H12ViewModel();
-                    break;
-                case 13:
-                    CurrentView = new H13ViewModel();
-                    break;
+                
             }
         }
 
