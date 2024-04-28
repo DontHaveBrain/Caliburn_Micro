@@ -17,7 +17,7 @@ namespace CaliburnMicro.Components
 {
     internal class AppBootstrapper:BootstrapperBase
     {
-        private CompositionContainer _container;//MEF组合，用于管理依赖关系
+        private CompositionContainer _container;// MEF组合，用于管理依赖关系
         private IWindowManager _windowManager;//管理窗口
         private IEventAggregator _eventAggregator;//用于传递事件
         public AppBootstrapper()
