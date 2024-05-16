@@ -11,6 +11,7 @@
                 <ResourceDictionary>
                     <com:AppBootstrapper x:Key="bootstrapper"/>
                 </ResourceDictionary>
+                <ResourceDictionary Source="/CaliburnMicro.UI;component/Collection.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

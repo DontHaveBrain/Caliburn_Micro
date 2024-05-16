@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
-using CaliburnMicro.ViewModel; 
+using CaliburnMicro.ViewModel;
+using CaliburnMicro.ViewModels.FirstPage;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -62,10 +63,16 @@ namespace CaliburnMicro.ViewModels
             MessageBox.Show($"页面{subItem.Screen}");
             switch(subItem.Screen)
             {
-                
+                default:
+
+                    CurrentView=new  FirstPageViewModel();
+                    break;
             }
         }
-
+        public void Close()
+        {
+            this.TryCloseAsync();
+        }
     }
 
     //名字 屏幕编号

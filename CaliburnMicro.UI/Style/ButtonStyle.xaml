@@ -1,0 +1,69 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:pu="https://opensource.panuon.com/wpf-ui" 
+                    xmlns:pucore="https://opensource.panuon.com/wpf" >
+    <ResourceDictionary.MergedDictionaries>
+    <pucore:SharedResourceDictionary Source="/Panuon.WPF.UI;component/Styles/ButtonStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="ButtonStyle"
+       TargetType="Button"
+       BasedOn="{StaticResource {x:Static pu:StyleKeys.ButtonStyle}}">
+        <Setter Property="Width"
+            Value="150"/>
+        <Setter Property="Height"
+            Value="35"/>
+        <Setter Property="Padding"
+            Value="10,0,10,0"/>
+        <Setter Property="Foreground"
+            Value="#555555"/>
+        <Setter Property="pu:ButtonHelper.HoverBackground"
+            Value="{x:Null}"/>
+        <Setter Property="pu:ButtonHelper.CornerRadius"
+            Value="4,4,4,4"/>
+        <Setter Property="pu:ButtonHelper.HoverBorderBrush"
+            Value="{x:Null}"/>
+        <Setter Property="pu:ButtonHelper.HoverBorderThickness"
+            Value="{x:Null}"/>
+        <Setter Property="pu:ButtonHelper.HoverCornerRadius"
+            Value="{x:Null}"/>
+        <Setter Property="pu:ButtonHelper.ClickBorderBrush"
+            Value="{x:Null}"/>
+        <Setter Property="pu:ButtonHelper.ClickBorderThickness"
+            Value="{x:Null}"/>
+        <Setter Property="pu:ButtonHelper.ClickCornerRadius"
+            Value="{x:Null}"/>
+        <Setter Property="pu:ButtonHelper.ShadowColor"
+            Value="#FF2B97FF"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="1,1">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0"
+                                  Color="#FF3D6BED"/>
+                        <GradientStop Offset="0.5"
+                                  Color="#FF2B97FF"/>
+                        <GradientStop Offset="1"
+                                  Color="#FF3DC3ED"/>
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="pu:ButtonHelper.ClickBackground">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="1,0"
+                                 EndPoint="0,1">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0"
+                                  Color="#FF2050D7"/>
+                        <GradientStop Offset="0.5"
+                                  Color="#FF157DE2"/>
+                        <GradientStop Offset="1"
+                                  Color="#FF20ABD7"/>
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
